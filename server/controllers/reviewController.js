@@ -1,4 +1,13 @@
 const Review = require('../models/Review');
+const Trip = require('../models/Trip');
+
+// Recompute a trip's rating + reviewCount from its real reviews
+async function recalcTrip(tripId) {
+  const reviews = await Review.find({ trip: tripId, isApproved: true }).select('rating');
+  const count = reviews.length;
+  const avg = count ? reviews.reduce((s, r) => s + r.rating, 0) / count : 0;
+  await Trip.findByIdAndUpdate(tripId, { rating: Math.round(avg * 10) / 10, reviewCount: count });
+}
 
 // POST /api/reviews
 exports.createReview = async (req, res) => {
@@ -33,7 +42,9 @@ exports.deleteReview = async (req, res) => {
     if (!review) return res.status(404).json({ message: 'Review not found' });
     if (review.user.toString() !== req.user.id && req.user.role !== 'admin')
       return res.status(403).json({ message: 'Not authorized' });
+    const tripId = review.trip;
     await review.deleteOne();
+    await recalcTrip(tripId); // keep the trip's rating/count honest after removal
     res.json({ success: true, message: 'Review deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });

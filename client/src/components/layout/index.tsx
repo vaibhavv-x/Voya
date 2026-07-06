@@ -287,11 +287,15 @@ export function TripCard({ trip }: { trip: Trip; index?: number }) {
               )}
               <p className="text-[10px] text-mist">per person</p>
             </div>
-            <div className="flex items-center gap-1 text-amber">
-              <span className="text-xs">★</span>
-              <span className="text-sm font-semibold text-ink dark:text-cream">{trip.rating}</span>
-              <span className="text-[10px] text-mist">({trip.reviewCount})</span>
-            </div>
+            {trip.reviewCount > 0 ? (
+              <div className="flex items-center gap-1 text-amber">
+                <span className="text-xs">★</span>
+                <span className="text-sm font-semibold text-ink dark:text-cream">{trip.rating}</span>
+                <span className="text-[10px] text-mist">({trip.reviewCount})</span>
+              </div>
+            ) : (
+              <span className="text-[10px] text-mist border border-black/10 dark:border-white/15 rounded-full px-2 py-0.5">New</span>
+            )}
           </div>
         </div>
       </div>

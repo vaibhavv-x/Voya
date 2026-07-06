@@ -38,7 +38,7 @@ const TRIPS = [
     transportTo: 'Fly to Ngurah Rai International Airport Bali',
     transportLocal: 'Private AC van throughout',
     location: { lat: -8.5069, lng: 115.2625 },
-    isFeatured: true, rating: 4.8, reviewCount: 143,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Ladakh High Altitude Circuit', slug: 'ladakh-high-altitude-circuit',
@@ -77,7 +77,7 @@ const TRIPS = [
     transportTo: 'Fly to Leh Kushok Bakula Rimpochee Airport',
     transportLocal: 'Toyota Innova SUV throughout',
     location: { lat: 34.1526, lng: 77.5771 },
-    isFeatured: true, rating: 4.9, reviewCount: 87,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Maldives Stillwater Retreat', slug: 'maldives-stillwater-retreat',
@@ -112,7 +112,7 @@ const TRIPS = [
     transportTo: 'Fly to Velana International Airport Male',
     transportLocal: 'Seaplane transfer to resort',
     location: { lat: 5.6841, lng: 73.3822 },
-    isFeatured: true, rating: 5.0, reviewCount: 62,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Kyoto and Tokyo Cultural Immersion', slug: 'kyoto-tokyo-cultural-immersion',
@@ -152,7 +152,7 @@ const TRIPS = [
     transportTo: 'Fly to Narita or Haneda Airport Tokyo',
     transportLocal: 'JR Pass bullet trains plus city metro',
     location: { lat: 35.0116, lng: 135.7681 },
-    isFeatured: true, rating: 4.9, reviewCount: 94,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Santorini and Athens Escape', slug: 'santorini-athens-escape',
@@ -190,7 +190,7 @@ const TRIPS = [
     transportTo: 'Fly to Athens International Airport',
     transportLocal: 'Internal Greek flight plus ferry plus private transfers',
     location: { lat: 36.4618, lng: 25.3753 },
-    isFeatured: true, rating: 4.8, reviewCount: 71,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Rajasthan Royal Heritage Circuit', slug: 'rajasthan-royal-heritage-circuit',
@@ -228,7 +228,7 @@ const TRIPS = [
     transportTo: 'Fly Delhi to Jaipur, return Udaipur to Delhi',
     transportLocal: 'Private AC vehicle throughout',
     location: { lat: 26.9124, lng: 75.7873 },
-    isFeatured: false, rating: 4.7, reviewCount: 112,
+    isFeatured: false, rating: 0, reviewCount: 0,
   },
 ];
 

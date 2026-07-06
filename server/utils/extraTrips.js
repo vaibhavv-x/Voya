@@ -39,7 +39,7 @@ module.exports = [
     accommodationDetails: 'Central boutique stays plus one night on a traditional cruise.',
     transportTo: 'Fly to Noi Bai International Airport, Hanoi', transportLocal: 'Private AC vehicle plus one domestic flight',
     location: { lat: 21.0285, lng: 105.8542 },
-    isFeatured: true, rating: 4.8, reviewCount: 76,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Thailand Islands and Bangkok', slug: 'thailand-islands-and-bangkok',
@@ -74,7 +74,7 @@ module.exports = [
     accommodationDetails: 'Modern city hotel and a beachfront resort in the south.',
     transportTo: 'Fly to Suvarnabhumi Airport, Bangkok', transportLocal: 'Domestic flight plus private transfers',
     location: { lat: 7.8804, lng: 98.3923 },
-    isFeatured: true, rating: 4.7, reviewCount: 128,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Sri Lanka Hills and Coast', slug: 'sri-lanka-hills-and-coast',
@@ -111,7 +111,7 @@ module.exports = [
     accommodationDetails: 'Tea-country resorts, a safari lodge, and a boutique fort stay.',
     transportTo: 'Fly to Bandaranaike International Airport, Colombo', transportLocal: 'Private vehicle plus scenic train',
     location: { lat: 7.2906, lng: 80.6337 },
-    isFeatured: false, rating: 4.8, reviewCount: 64,
+    isFeatured: false, rating: 0, reviewCount: 0,
   },
   {
     title: 'Spiti Valley Backpacking Circuit', slug: 'spiti-valley-backpacking-circuit',
@@ -147,7 +147,7 @@ module.exports = [
     accommodationDetails: 'Authentic Spitian homestays. Simple, warm, and unforgettable.',
     transportTo: 'Reach Shimla by road or train; trip ends in Manali', transportLocal: 'Tempo Traveller throughout',
     location: { lat: 32.2270, lng: 78.0716 },
-    isFeatured: false, rating: 4.9, reviewCount: 53,
+    isFeatured: false, rating: 0, reviewCount: 0,
   },
   {
     title: 'Kerala Backwaters and Hills', slug: 'kerala-backwaters-and-hills',
@@ -181,7 +181,7 @@ module.exports = [
     accommodationDetails: 'Hill resort, a private houseboat night, and a heritage Fort Kochi stay.',
     transportTo: 'Fly to Cochin International Airport', transportLocal: 'Private AC vehicle plus houseboat',
     location: { lat: 9.4981, lng: 76.3388 },
-    isFeatured: true, rating: 4.8, reviewCount: 141,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Kashmir Paradise Retreat', slug: 'kashmir-paradise-retreat',
@@ -215,7 +215,7 @@ module.exports = [
     accommodationDetails: 'A traditional carved houseboat night plus comfortable valley hotels.',
     transportTo: 'Fly to Srinagar International Airport', transportLocal: 'Private vehicle throughout',
     location: { lat: 34.0837, lng: 74.7973 },
-    isFeatured: true, rating: 4.7, reviewCount: 118,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Enchanting Georgia', slug: 'enchanting-georgia',
@@ -251,7 +251,7 @@ module.exports = [
     accommodationDetails: 'Characterful old-town stays and one wine-country guesthouse.',
     transportTo: 'Fly to Tbilisi International Airport', transportLocal: 'Private vehicle throughout',
     location: { lat: 41.7151, lng: 44.8271 },
-    isFeatured: false, rating: 4.8, reviewCount: 47,
+    isFeatured: false, rating: 0, reviewCount: 0,
   },
   {
     title: 'Ultimate Iceland Expedition', slug: 'ultimate-iceland-expedition',
@@ -290,7 +290,7 @@ module.exports = [
     accommodationDetails: 'Warm, comfortable hotels at each overnight stop on the circuit.',
     transportTo: 'Fly to Keflavik International Airport', transportLocal: 'Private guided vehicle throughout',
     location: { lat: 64.1466, lng: -21.9426 },
-    isFeatured: true, rating: 4.9, reviewCount: 39,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Masai Mara Great Migration Safari', slug: 'masai-mara-great-migration-safari',
@@ -326,7 +326,7 @@ module.exports = [
     accommodationDetails: 'Comfortable en-suite tents — wild by night, luxurious by design.',
     transportTo: 'Fly to Jomo Kenyatta International Airport, Nairobi', transportLocal: '4x4 Land Cruisers with pop-up roofs',
     location: { lat: -1.4931, lng: 35.1439 },
-    isFeatured: true, rating: 4.9, reviewCount: 58,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Ranthambore Tiger Trails', slug: 'ranthambore-tiger-trails',
@@ -358,7 +358,7 @@ module.exports = [
     accommodationDetails: 'Cottages with verandas, a pool, and resident birdlife.',
     transportTo: 'Train to Sawai Madhopur from Delhi or Jaipur', transportLocal: 'Open 4x4 gypsies inside the park',
     location: { lat: 26.0173, lng: 76.5026 },
-    isFeatured: false, rating: 4.7, reviewCount: 83,
+    isFeatured: false, rating: 0, reviewCount: 0,
   },
   {
     title: 'Andaman Island Escape', slug: 'andaman-island-escape',
@@ -392,7 +392,7 @@ module.exports = [
     accommodationDetails: 'Beachfront cottages a barefoot walk from the water.',
     transportTo: 'Fly to Port Blair (Veer Savarkar International)', transportLocal: 'Private cabs plus government and private ferries',
     location: { lat: 11.9762, lng: 92.9503 },
-    isFeatured: true, rating: 4.8, reviewCount: 96,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Meghalaya Caves and Waterfalls', slug: 'meghalaya-caves-and-waterfalls',
@@ -426,7 +426,7 @@ module.exports = [
     accommodationDetails: 'Warm local stays with hill views and better breakfasts than you expect.',
     transportTo: 'Fly to Guwahati (LGBI Airport)', transportLocal: 'Private SUV throughout',
     location: { lat: 25.2841, lng: 91.7217 },
-    isFeatured: true, rating: 4.8, reviewCount: 71,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
   {
     title: 'Mauritius Honeymoon Bliss', slug: 'mauritius-honeymoon-bliss',
@@ -461,6 +461,6 @@ module.exports = [
     accommodationDetails: 'Sea-view rooms, pool bar, and a beach that empties by dusk.',
     transportTo: 'Fly to SSR International Airport, Mauritius', transportLocal: 'Private car plus catamaran',
     location: { lat: -20.2765, lng: 57.3728 },
-    isFeatured: true, rating: 4.9, reviewCount: 64,
+    isFeatured: true, rating: 0, reviewCount: 0,
   },
 ];

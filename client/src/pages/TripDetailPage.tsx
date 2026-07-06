@@ -280,11 +280,17 @@ export default function TripDetailPage() {
 
             {/* Rating */}
             <div className="flex items-center gap-2 mb-6">
-              <div className="flex gap-0.5">{Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} size={14} className={i < Math.round(trip.rating) ? 'fill-amber text-amber' : 'text-fog'} />
-              ))}</div>
-              <span className="font-semibold text-ink dark:text-cream text-sm">{trip.rating}</span>
-              <span className="text-xs text-mist">({trip.reviewCount} reviews)</span>
+              {trip.reviewCount > 0 ? (
+                <>
+                  <div className="flex gap-0.5">{Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} size={14} className={i < Math.round(trip.rating) ? 'fill-amber text-amber' : 'text-fog'} />
+                  ))}</div>
+                  <span className="font-semibold text-ink dark:text-cream text-sm">{trip.rating}</span>
+                  <span className="text-xs text-mist">({trip.reviewCount} {trip.reviewCount === 1 ? 'review' : 'reviews'})</span>
+                </>
+              ) : (
+                <span className="text-xs text-mist">New journey · no reviews yet</span>
+              )}
             </div>
 
             {/* Tabs */}
