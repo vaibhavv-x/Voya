@@ -1,56 +1,81 @@
-# Voya° — Full-Stack MERN Travel Agency
+<div align="center">
 
-> Curated travel for the soulful wanderer. A production-grade MERN stack travel platform with cinematic UI, full booking system, user dashboard, and admin panel.
+# Voya°
+
+### Curated travel for the soulful wanderer.
+
+A production-grade **MERN** travel platform — cinematic UI, full booking engine, payments, an AI trip designer, and a complete admin suite.
+
+<br/>
+
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+
+![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![JWT](https://img.shields.io/badge/Auth-JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![Gemini](https://img.shields.io/badge/AI-Google_Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white)
+
+<br/>
+
+![Status](https://img.shields.io/badge/status-active-success?style=flat-square)
+![License](https://img.shields.io/badge/license-Proprietary-lightgrey?style=flat-square)
+![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)
+![Made with love](https://img.shields.io/badge/made%20with-%E2%99%A5-C8853A?style=flat-square)
+
+</div>
 
 ---
 
-## 🌍 What's Built
+## ✨ Highlights
 
-### Frontend (React + TypeScript + Vite + Tailwind)
-| Page | Route | Description |
-|------|-------|-------------|
-| Home | `/` | Cinematic video hero, featured trips, why Voya, testimonials |
-| All Trips | `/trips` | Filterable, searchable, paginated grid with sort |
-| Trip Detail | `/trips/:slug` | Full itinerary, booking form, reviews, related trips |
-| Destinations | `/destinations` | Visual destination grid |
-| About | `/about` | Team, timeline, mission, stats |
-| Contact | `/contact` | Form, map, FAQ accordion |
-| Login | `/login` | Split-panel auth |
-| Register | `/register` | Split-panel auth |
-| Dashboard | `/dashboard` | Bookings, wishlist, profile edit |
-| Admin | `/admin` | Stats, trip management, booking overview |
-| 404 | `*` | Custom not-found page |
-
-### Backend (Node.js + Express + MongoDB)
-- **7 models**: User, Trip, Booking, Review, Newsletter
-- **Full REST API** with auth, pagination, filtering
-- **JWT authentication** with bcrypt password hashing
-- **Rich seeder** with 6 fully-detailed trips (Ladakh, Bali, Maldives, Japan, Greece, Rajasthan)
-- **Admin-only routes** with role-based access
+- 🎬 **Cinematic, editorial UI** — Instrument Serif + Inter, an ambient video hero, Framer Motion, fully responsive down to mobile.
+- 🧭 **AI Trip Designer & assistant** — Google Gemini plans custom itineraries and answers traveller questions in-app.
+- 💳 **Real payments** — Razorpay (cards/net-banking) **and** direct UPI-to-bank, plus **group split payments** where each traveller pays their share.
+- 🔐 **Email OTP verification** — new accounts confirm a 6-digit code before activation.
+- 📅 **Booking lifecycle** — seat-managed departures, confirmation popup, and an **Add-to-Calendar (.ics)** reminder.
+- 🎁 **Referral program** — wallet credit for inviter and invitee, redeemable at checkout.
+- 🛠️ **Full admin suite** — trips CRUD (Cloudinary uploads), bookings, coupons, enquiries, and live stats.
+- 📧 **Transactional email** — OTP, booking confirmations, admin alerts, enquiry acknowledgements (Nodemailer).
+- 🔎 **SEO-ready** — `react-helmet-async` meta tags + generated sitemap.
 
 ---
 
-## 🗂️ Folder Structure
+## 🧰 Tech Stack
+
+| Layer | Technologies |
+|-------|-------------|
+| **Frontend** | ![React](https://img.shields.io/badge/-React_18-61DAFB?logo=react&logoColor=black) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white) ![Tailwind](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white) |
+| **UX** | ![Framer Motion](https://img.shields.io/badge/-Framer_Motion-0055FF?logo=framer&logoColor=white) ![React Router](https://img.shields.io/badge/-React_Router-CA4245?logo=reactrouter&logoColor=white) ![Axios](https://img.shields.io/badge/-Axios-5A29E4?logo=axios&logoColor=white) |
+| **Backend** | ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/-Express-000000?logo=express&logoColor=white) ![Mongoose](https://img.shields.io/badge/-Mongoose-880000?logo=mongoose&logoColor=white) |
+| **Data & Auth** | ![MongoDB](https://img.shields.io/badge/-MongoDB_Atlas-47A248?logo=mongodb&logoColor=white) ![JWT](https://img.shields.io/badge/-JWT-000000?logo=jsonwebtokens&logoColor=white) ![bcrypt](https://img.shields.io/badge/-bcrypt-525252) |
+| **Services** | ![Gemini](https://img.shields.io/badge/-Google_Gemini-8E75B2?logo=googlegemini&logoColor=white) ![Razorpay](https://img.shields.io/badge/-Razorpay-0C2451?logo=razorpay&logoColor=white) ![Cloudinary](https://img.shields.io/badge/-Cloudinary-3448C5?logo=cloudinary&logoColor=white) ![Gmail](https://img.shields.io/badge/-Nodemailer-EA4335?logo=gmail&logoColor=white) ![Maps](https://img.shields.io/badge/-Google_Maps-4285F4?logo=googlemaps&logoColor=white) |
+| **Deploy** | ![Vercel](https://img.shields.io/badge/-Vercel-000000?logo=vercel&logoColor=white) ![Render](https://img.shields.io/badge/-Render-46E3B7?logo=render&logoColor=black) |
+
+---
+
+## 🗂️ Project Structure
 
 ```
 voya-mern/
-├── server/
-│   ├── models/          User, Trip, Booking, Review, Newsletter
-│   ├── controllers/     authController, tripController, bookingController
-│   │                    reviewController, miscControllers
-│   ├── routes/          auth, trips, bookings, reviews, wishlist
-│   │                    contact, newsletter, admin
-│   ├── middleware/       auth.js  (JWT protect + adminOnly)
-│   ├── utils/           seeder.js (6 rich sample trips)
-│   └── index.js         Express server entry
+├── server/                     # Express + Mongoose API
+│   ├── models/                 # User, Trip, Booking, Review, Coupon, Lead, Newsletter
+│   ├── controllers/            # auth, trip, booking, review, assistant, coupon, admin…
+│   ├── routes/                 # auth, trips, bookings, reviews, wishlist,
+│   │                           #   contact, admin, newsletter, assistant, coupons
+│   ├── middleware/             # auth.js (JWT protect + adminOnly)
+│   ├── utils/                  # seeder, mailer, extraTrips
+│   └── index.js                # server entry
 │
-└── client/
+└── client/                     # React + Vite + Tailwind
     ├── src/
-    │   ├── components/layout/   Navbar, Footer, TripCard, VideoBackground
-    │   ├── context/            AuthContext (JWT + localStorage)
-    │   ├── pages/              All 11 pages
-    │   ├── services/           api.ts (Axios + auto-token)
-    │   └── types/              Shared TypeScript interfaces
+    │   ├── components/          # layout (Navbar, Footer, TripCard, AssistantWidget…), admin
+    │   ├── context/            # AuthContext (JWT + localStorage)
+    │   ├── pages/              # Home, Trips, TripDetail, Design, SplitPay, Auth, Legal…
+    │   ├── services/           # api.ts (Axios + JWT interceptor)
+    │   └── types/              # shared TypeScript interfaces
     └── vite.config.ts
 ```
 
@@ -58,145 +83,101 @@ voya-mern/
 
 ## ⚡ Quick Start
 
-### 1. Install
-
 ```bash
-# Clone or extract
-cd voya-mern
-
-# Server
+# 1. Install
 cd server && npm install
-
-# Client
 cd ../client && npm install
+
+# 2. Configure env (copy the templates, then fill in your keys)
+cp server/.env.example server/.env
+cp client/.env.example client/.env
+
+# 3. Run (two terminals)
+cd server && npm run dev     # API  → http://localhost:5000
+cd client && npm run dev     # App  → http://localhost:3000
+
+# 4. Seed the catalogue (one-time)
+#    open http://localhost:5000/api/seed
 ```
 
-### 2. Configure Environment
+**Default admin:** `admin@voya.travel` / `voya_admin_2026`
 
-**`server/.env`**
-```env
-PORT=5000
-MONGO_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/voya
-JWT_SECRET=your_jwt_secret_minimum_32_chars
-CLIENT_URL=http://localhost:5173
-EMAIL_USER=hello@voya.travel
-EMAIL_PASS=your_gmail_app_password
-```
-
-**`client/.env`**
-```env
-VITE_API_URL=http://localhost:5000/api
-```
-
-### 3. Run
-
-```bash
-# Terminal 1 — Backend
-cd server && npm run dev
-
-# Terminal 2 — Frontend
-cd client && npm run dev
-```
-
-### 4. Seed the Database
-
-Visit: `http://localhost:5000/api/seed`
-
-This creates:
-- 6 fully-detailed trips (Ladakh, Bali, Maldives, Kyoto/Tokyo, Santorini/Athens, Rajasthan)
-- Admin account: `admin@voya.travel` / `voya_admin_2026`
+> 🔑 Environment variables are documented in [`server/.env.example`](server/.env.example) and [`client/.env.example`](client/.env.example). Never commit your real `.env` — it's git-ignored.
 
 ---
 
-## 🔑 Make Yourself Admin
+## 🚀 Deployment
 
-After registering normally:
-```js
-// MongoDB shell or Compass
-db.users.updateOne({ email: "you@email.com" }, { $set: { role: "admin" } })
-```
-Then visit `/admin` for the admin dashboard.
-
----
-
-## 🚢 Deployment
-
-### Frontend → Vercel
-```bash
-cd client && npm run build
-# Push to GitHub → Import in Vercel
-# Set: VITE_API_URL = https://your-render-backend.onrender.com/api
-# vercel.json handles SPA routing automatically
-```
-
-### Backend → Render
-- Root directory: `server`
-- Build command: `npm install`
-- Start command: `npm start`
-- Add env vars in Render dashboard
-
-### Database → MongoDB Atlas
-- Create free M0 cluster
-- Add connection string to `MONGO_URI`
-- Whitelist `0.0.0.0/0` for Render
+Frontend → **Vercel**, backend → **Render**, database → **MongoDB Atlas**.
+A full click-by-click walkthrough (with the exact env-var table for each host) lives in **[DEPLOYMENT.md](DEPLOYMENT.md)**.
 
 ---
 
 ## 📡 API Reference
 
-### Auth
+<details>
+<summary><b>Auth</b></summary>
+
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| POST | `/api/auth/register` | — | Register new user |
+| POST | `/api/auth/register` | — | Register (sends OTP) |
+| POST | `/api/auth/verify-otp` | — | Verify email, receive JWT |
+| POST | `/api/auth/resend-otp` | — | Resend verification code |
 | POST | `/api/auth/login` | — | Login, receive JWT |
-| GET | `/api/auth/me` | JWT | Get current user + wishlist |
-| PUT | `/api/auth/profile` | JWT | Update name/phone/avatar |
+| GET | `/api/auth/me` | JWT | Current user + wishlist |
+| GET | `/api/auth/referral` | JWT | Referral code, link & wallet |
+| PUT | `/api/auth/profile` | JWT | Update profile |
 | PUT | `/api/auth/password` | JWT | Change password |
-| POST | `/api/auth/forgot-password` | — | Generate reset token |
-| PUT | `/api/auth/reset-password/:token` | — | Reset password |
+</details>
 
-### Trips
+<details>
+<summary><b>Trips</b></summary>
+
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| GET | `/api/trips` | — | List trips (filter/sort/paginate) |
-| GET | `/api/trips/:slug` | — | Trip detail by slug |
+| GET | `/api/trips` | — | List (filter / sort / paginate) |
+| GET | `/api/trips/:slug` | — | Trip detail |
 | GET | `/api/trips/:slug/related` | — | Related trips |
-| POST | `/api/trips` | Admin | Create trip |
-| PUT | `/api/trips/:id` | Admin | Update trip |
-| DELETE | `/api/trips/:id` | Admin | Deactivate trip |
+| POST | `/api/trips` | Admin | Create |
+| PUT | `/api/trips/:id` | Admin | Update |
+| DELETE | `/api/trips/:id` | Admin | Deactivate |
 
-**Query params for GET /api/trips:**
-`category`, `continent`, `country`, `difficulty`, `minPrice`, `maxPrice`, `minDays`, `maxDays`, `search`, `featured`, `sort` (newest/popular/rating/price_asc/price_desc), `page`, `limit`
+**Query params:** `category`, `continent`, `country`, `difficulty`, `minPrice`, `maxPrice`, `minDays`, `maxDays`, `search`, `featured`, `sort` (`newest`·`popular`·`rating`·`price_asc`·`price_desc`), `page`, `limit`
+</details>
 
-### Bookings
+<details>
+<summary><b>Bookings & Payments</b></summary>
+
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| POST | `/api/bookings` | JWT | Create booking |
-| GET | `/api/bookings/my` | JWT | User's bookings |
-| GET | `/api/bookings/:id` | JWT | Booking detail |
-| PUT | `/api/bookings/:id/cancel` | JWT | Cancel booking |
-| PUT | `/api/bookings/:id/payment` | JWT | Confirm payment |
+| POST | `/api/bookings` | JWT | Create booking (coupon, wallet, departure) |
+| GET | `/api/bookings/my` | JWT | My bookings |
+| PUT | `/api/bookings/:id/cancel` | JWT | Cancel (releases seats) |
+| POST | `/api/bookings/:id/create-order` | JWT | Razorpay order |
+| POST | `/api/bookings/:id/verify-payment` | JWT | Verify Razorpay signature |
+| GET | `/api/bookings/:id/upi-intent` | JWT | UPI intent + QR |
+| GET | `/api/bookings/:id/split` | — | Group split status |
+| POST | `/api/bookings/:id/split-claim` | — | Mark a share paid |
 | GET | `/api/bookings/admin/all` | Admin | All bookings |
+| PUT | `/api/bookings/:id/status` | Admin | Confirm / cancel (emails traveller) |
+</details>
 
-### Reviews
+<details>
+<summary><b>AI, Coupons, Reviews, Wishlist, Admin</b></summary>
+
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
+| POST | `/api/assistant/chat` | — | Gemini travel assistant |
+| POST | `/api/assistant/design` | — | AI Trip Designer (structured itinerary) |
+| GET / POST | `/api/coupons` | mixed | List / create (admin) |
+| POST | `/api/coupons/validate` | JWT | Apply a coupon at checkout |
 | POST | `/api/reviews` | JWT | Submit review |
 | GET | `/api/reviews/trip/:tripId` | — | Trip reviews |
-| DELETE | `/api/reviews/:id` | JWT | Delete own review |
-
-### Wishlist
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/wishlist` | JWT | Get wishlist |
-| POST | `/api/wishlist/:tripId` | JWT | Toggle wishlist item |
-
-### Admin
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
+| GET | `/api/wishlist` · POST `/:tripId` | JWT | Get / toggle wishlist |
 | GET | `/api/admin/stats` | Admin | Dashboard stats |
-| GET | `/api/admin/users` | Admin | All users |
-| GET | `/api/seed` | — | Seed sample data (dev only) |
+| GET | `/api/admin/leads` | Admin | Contact enquiries |
+| GET | `/api/seed` | — | Seed sample data (dev) |
+</details>
 
 ---
 
@@ -211,37 +192,14 @@ cd client && npm run build
 | `amber` | `#C8853A` | Accent, eyebrows, highlights |
 | `surface` | `#F4F2EE` | Cards, input backgrounds |
 
-**Fonts:**
-- Display: `Instrument Serif` (italic for emphasis)
-- Body: `Inter` (weights 300–700)
+**Type:** `Instrument Serif` (display, italic for emphasis) · `Inter` (body).
 
 ---
 
-## 🛠️ Tech Stack
+<div align="center">
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 18, TypeScript, Vite, Tailwind CSS v3 |
-| Animation | Framer Motion, CSS `requestAnimationFrame` video loop |
-| Routing | React Router DOM v6 |
-| HTTP | Axios with JWT interceptor |
-| Backend | Node.js, Express.js |
-| Database | MongoDB + Mongoose ODM |
-| Auth | JWT + bcryptjs |
-| Email | Nodemailer (Gmail SMTP) |
-| Deployment | Vercel (frontend) + Render (backend) + MongoDB Atlas |
+**Built with obsessive care.**
 
----
+© 2026 Voya° Travel
 
-## 📋 What to Add Next
-
-- [ ] **Razorpay payment** — keys in `.env`, integrate in booking flow
-- [ ] **Cloudinary** — image upload for admin trip creation
-- [ ] **Nodemailer** — booking confirmation + welcome emails
-- [ ] **Google Maps** — embed in contact + trip detail pages
-- [ ] **Blog/Journal** — markdown-based travel articles
-- [ ] **Coupon codes** — discount system in bookings
-
----
-
-© 2026 Voya° Travel. Built with obsessive care.
+</div>
