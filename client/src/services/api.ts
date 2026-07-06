@@ -2,7 +2,8 @@ import axios from 'axios'
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
-  timeout: 10000,
+  // Generous timeout so a Render free-tier cold start (~30–50s) doesn't abort requests
+  timeout: 60000,
 })
 
 // Attach JWT

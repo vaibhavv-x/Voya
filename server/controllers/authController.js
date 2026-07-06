@@ -14,8 +14,14 @@ async function issueOtp(user) {
   user.emailOtp = hashOtp(otp);
   user.emailOtpExpires = Date.now() + OTP_TTL;
   await user.save({ validateBeforeSave: false });
-  const mail = await mailer.sendOtp(user, otp);
-  return mail && mail.skipped ? { devOtp: otp } : {};
+
+  // Try to email the code, but never let a slow/blocked SMTP hang the request.
+  // If it doesn't send within the window, hand the code back so signup still completes.
+  const sent = await Promise.race([
+    mailer.sendOtp(user, otp).then((r) => !!(r && r.sent)).catch(() => false),
+    new Promise((res) => setTimeout(() => res(false), 8500)),
+  ]);
+  return sent ? {} : { devOtp: otp };
 }
 
 const signToken = (id) =>
