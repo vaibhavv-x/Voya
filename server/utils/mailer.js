@@ -1,10 +1,46 @@
 const nodemailer = require('nodemailer');
 
 function configured() {
+  // Prefer Brevo's HTTPS API (works on hosts that block SMTP, e.g. Render).
+  if (process.env.BREVO_API_KEY) return true;
   const p = process.env.EMAIL_PASS;
   return !!p && p !== 'your_gmail_app_password' && !!process.env.EMAIL_USER;
 }
 exports.isConfigured = configured;
+
+const FROM_EMAIL = () => process.env.EMAIL_USER || 'hello.voyatravel@gmail.com';
+
+// Send via Brevo's transactional email HTTP API (port 443 — never blocked).
+async function sendViaBrevo({ to, subject, html }) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 8000);
+  try {
+    const resp = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'api-key': process.env.BREVO_API_KEY,
+        'content-type': 'application/json',
+        'accept': 'application/json',
+      },
+      body: JSON.stringify({
+        sender: { name: 'Voya°', email: FROM_EMAIL() },
+        to: [{ email: to }],
+        subject,
+        htmlContent: html,
+      }),
+      signal: ctrl.signal,
+    });
+    if (resp.ok) return { sent: true };
+    const errText = await resp.text().catch(() => '');
+    console.error('✉️  brevo send failed:', resp.status, errText);
+    return { error: `brevo ${resp.status}` };
+  } catch (err) {
+    console.error('✉️  brevo send error:', err.message);
+    return { error: err.message };
+  } finally {
+    clearTimeout(t);
+  }
+}
 
 let transporter = null;
 function getTransporter() {
@@ -25,12 +61,14 @@ function getTransporter() {
 // Never throw — email must not break a booking/enquiry. Log and move on.
 async function send({ to, subject, html }) {
   if (!configured()) {
-    console.log(`✉️  [email skipped — no EMAIL_PASS set] would send "${subject}" to ${to}`);
+    console.log(`✉️  [email skipped — not configured] would send "${subject}" to ${to}`);
     return { skipped: true };
   }
+  // Brevo HTTP API is primary (Render blocks SMTP); SMTP is the local fallback.
+  if (process.env.BREVO_API_KEY) return sendViaBrevo({ to, subject, html });
   try {
     await getTransporter().sendMail({
-      from: `Voya° <${process.env.EMAIL_USER}>`,
+      from: `Voya° <${FROM_EMAIL()}>`,
       to, subject, html,
     });
     return { sent: true };
