@@ -173,7 +173,7 @@ export function Footer() {
               <sup className="text-[10px] text-amber font-sans">°</sup>
             </div>
             <p className="text-xs text-fog leading-relaxed max-w-[200px]">
-              Curated travel for the soulful wanderer. Based in Mumbai. Journeys worldwide.
+              Curated travel for the soulful wanderer. Based in Gurugram. Journeys worldwide.
             </p>
             <div className="flex gap-2 mt-6">
               {['IG', 'YT', 'TW', 'LI'].map(s => (

@@ -76,7 +76,7 @@ export default function HomePage() {
           {/* Trust strip */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }}
             className="flex items-center gap-8 mt-12 opacity-60">
-            {[{ v: '4.9★', l: 'Google rating' }, { v: '8K+', l: 'Journeys crafted' }, { v: '60+', l: 'Destinations' }].map(({ v, l }) => (
+            {[{ v: '19', l: 'Curated journeys' }, { v: '12', l: 'Countries' }, { v: '2026', l: 'Founded' }].map(({ v, l }) => (
               <div key={l} className="text-center">
                 <div className="text-sm font-semibold text-ink dark:text-cream">{v}</div>
                 <div className="text-[10px] text-mist mt-0.5">{l}</div>

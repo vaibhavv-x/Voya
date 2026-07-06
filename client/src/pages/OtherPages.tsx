@@ -368,13 +368,13 @@ export function AboutPage() {
     ],
   }
 
-  const TIMELINE = [
-    { year: '2019', title: 'Founded in Mumbai', desc: 'Started as a 3-person boutique planning service from a tiny Bandra apartment.' },
-    { year: '2020', title: 'First 100 Travelers', desc: 'Despite the world stopping, we curated 100 domestic journeys that changed how people travel inside India.' },
-    { year: '2022', title: 'Went International', desc: 'Launched Southeast Asia and Europe circuits. 500+ travelers in the first year.' },
-    { year: '2023', title: '5,000 Journeys', desc: 'Crossed 5,000 travelers across 40 destinations. Launched the group trip format.' },
-    { year: '2025', title: 'Full Platform Launch', desc: 'Voya° becomes a full-stack travel platform — book, plan, and connect all in one place.' },
-    { year: '2026', title: 'Now', desc: '8,000+ travelers, 60+ destinations, and a team that lives for the next great journey.' },
+  const PROMISES = [
+    { year: '01', title: 'Handpicked, never templated', desc: 'Every route, stay, and guide is chosen deliberately — no copy-paste itineraries.' },
+    { year: '02', title: 'Honest pricing', desc: 'What you see is what you pay. No hidden costs, no last-minute surprises.' },
+    { year: '03', title: 'Small groups', desc: 'Intimate journeys that stay personal — you travel with a crew, not a crowd.' },
+    { year: '04', title: 'Reachable, always', desc: 'A real person on WhatsApp when you need one — before, during, and after your trip.' },
+    { year: '05', title: 'Founded in Gurugram, 2026', desc: 'A new travel company crafting journeys across India and beyond.' },
+    { year: '06', title: 'Just getting started', desc: 'Built with obsessive care from day one — and only getting better.' },
   ]
 
   return (
@@ -397,7 +397,7 @@ export function AboutPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 bg-amber">
-        {[['8,000+','Travelers'], ['60+','Destinations'], ['4.9★','Rating'], ['2026','Founded']].map(([v, l]) => (
+        {[['19','Curated journeys'], ['12','Countries'], ['100%','Handcrafted'], ['2026','Founded']].map(([v, l]) => (
           <div key={l} className="text-center py-8 border-r border-cream/20 last:border-0">
             <div className="font-serif text-3xl text-cream font-normal" style={{ fontFamily: '"Instrument Serif", serif' }}>{v}</div>
             <div className="text-xs text-cream/70 mt-1 uppercase tracking-widest">{l}</div>
@@ -453,14 +453,14 @@ export function AboutPage() {
           </div>
         </div>
 
-        {/* Timeline */}
+        {/* Promises */}
         <div>
-          <p className="section-eyebrow">Our journey</p>
+          <p className="section-eyebrow">Our promise</p>
           <h2 className="section-heading text-4xl mb-10">
-            How we got <em className="text-mist italic" style={{ fontFamily: '"Instrument Serif", serif' }}>here.</em>
+            What we <em className="text-mist italic" style={{ fontFamily: '"Instrument Serif", serif' }}>stand for.</em>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {TIMELINE.map((item, i) => (
+            {PROMISES.map((item, i) => (
               <div key={i} className="bg-surface dark:bg-white/5 rounded-2xl p-6 border border-black/5 dark:border-white/8">
                 <p className="text-xs text-amber font-medium tracking-widest mb-2">{item.year}</p>
                 <h3 className="font-medium text-ink dark:text-cream mb-1">{item.title}</h3>

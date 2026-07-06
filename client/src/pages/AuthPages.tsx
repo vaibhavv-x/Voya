@@ -179,7 +179,7 @@ export function RegisterPage() {
           className="absolute inset-0 w-full h-full object-cover opacity-40" />
         <div className="relative z-10 flex flex-col justify-end p-14 text-cream">
           <h2 className="font-serif text-4xl font-normal leading-tight mb-4" style={{ fontFamily: '"Instrument Serif", serif' }}>
-            Join 8,000+<br /><em className="text-fog italic">soulful wanderers.</em>
+Travel with<br /><em className="text-fog italic">soulful wanderers.</em>
           </h2>
           <p className="text-sm text-fog leading-relaxed max-w-xs">Exclusive early access to new trips, personalised recommendations, and a community that travels like you do.</p>
         </div>
