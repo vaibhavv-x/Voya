@@ -1,0 +1,47 @@
+# Render Blueprint — deploys the Voya° API.
+# In Render: New → Blueprint → connect this repo. Render reads this file,
+# then prompts you to fill the secret env vars (marked sync:false) once.
+services:
+  - type: web
+    name: voya-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      # Non-secret defaults — set here
+      - key: JWT_EXPIRE
+        value: 30d
+      - key: EMAIL_HOST
+        value: smtp.gmail.com
+      - key: EMAIL_PORT
+        value: "587"
+      - key: UPI_NAME
+        value: Voya Travel
+      # Secrets & per-deploy values — you'll paste these in the Render dashboard
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLIENT_URL          # your Vercel URL (fill after the frontend deploy)
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: UPI_ID
+        sync: false
