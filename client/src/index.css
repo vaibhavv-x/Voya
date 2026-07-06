@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { background: #FAF9F6; scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #0A0A0A; }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #F4F2EE; }
+  ::-webkit-scrollbar-thumb { background: #C8853A; border-radius: 2px; }
+}
+
+@layer components {
+  .btn-primary { @apply bg-ink text-cream dark:bg-cream dark:text-ink text-sm font-medium px-7 py-3 rounded-full hover:scale-[1.03] active:scale-[0.98] transition-transform duration-200 inline-flex items-center gap-2; }
+  .btn-outline  { @apply border border-ink/20 dark:border-cream/25 text-ink dark:text-cream text-sm font-medium px-7 py-3 rounded-full hover:border-ink dark:hover:border-cream transition-colors duration-200 inline-flex items-center gap-2; }
+  .input-base   { @apply w-full text-sm px-4 py-3 rounded-xl border border-black/10 dark:border-white/20 bg-transparent placeholder-fog text-ink dark:text-cream focus:outline-none focus:border-ink dark:focus:border-cream transition-colors font-sans; }
+  .section-eyebrow { @apply text-xs text-amber tracking-[0.18em] uppercase font-medium mb-3; }
+  .section-heading { @apply font-serif font-normal leading-[1.05] tracking-tight text-ink dark:text-cream; }
+  .card { @apply bg-cream dark:bg-[#141414] rounded-2xl overflow-hidden border border-black/5 dark:border-white/10; }
+  .skeleton { @apply bg-gradient-to-r from-surface dark:from-white/5 via-cream dark:via-white/10 to-surface dark:to-white/5 bg-[length:200%_100%] animate-shimmer rounded-xl; }
+}

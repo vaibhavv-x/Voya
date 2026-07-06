@@ -1,0 +1,14 @@
+const r = require('express').Router();
+const c = require('../controllers/authController');
+const { protect } = require('../middleware/auth');
+r.post('/register', c.register);
+r.post('/verify-otp', c.verifyOtp);
+r.post('/resend-otp', c.resendOtp);
+r.post('/login', c.login);
+r.get('/me', protect, c.getMe);
+r.get('/referral', protect, c.getReferral);
+r.put('/profile', protect, c.updateProfile);
+r.put('/password', protect, c.changePassword);
+r.post('/forgot-password', c.forgotPassword);
+r.put('/reset-password/:token', c.resetPassword);
+module.exports = r;

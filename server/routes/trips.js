@@ -1,0 +1,11 @@
+const r = require('express').Router();
+const c = require('../controllers/tripController');
+const { protect, adminOnly } = require('../middleware/auth');
+r.get('/', c.getTrips);
+r.get('/id/:id', c.getTripById);
+r.get('/:slug', c.getTripBySlug);
+r.get('/:slug/related', c.getRelated);
+r.post('/', protect, adminOnly, c.createTrip);
+r.put('/:id', protect, adminOnly, c.updateTrip);
+r.delete('/:id', protect, adminOnly, c.deleteTrip);
+module.exports = r;
