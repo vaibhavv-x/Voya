@@ -1,7 +1,11 @@
 const nodemailer = require('nodemailer');
 
+function gmailConfigured() {
+  return !!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET && process.env.GOOGLE_REFRESH_TOKEN);
+}
 function configured() {
-  // Prefer Brevo's HTTPS API (works on hosts that block SMTP, e.g. Render).
+  // All over HTTPS so they work on hosts that block SMTP (e.g. Render).
+  if (gmailConfigured()) return true;   // Gmail API (OAuth2)
   if (process.env.BREVO_API_KEY) return true;
   const p = process.env.EMAIL_PASS;
   return !!p && p !== 'your_gmail_app_password' && !!process.env.EMAIL_USER;
@@ -9,6 +13,63 @@ function configured() {
 exports.isConfigured = configured;
 
 const FROM_EMAIL = () => process.env.EMAIL_USER || 'hello.voyatravel@gmail.com';
+
+// ── Gmail API (send over HTTPS via OAuth2 — not blocked by Render) ──
+let gmailToken = { value: null, exp: 0 };
+async function gmailAccessToken() {
+  if (gmailToken.value && Date.now() < gmailToken.exp - 60000) return gmailToken.value;
+  const resp = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      client_id: process.env.GOOGLE_CLIENT_ID,
+      client_secret: process.env.GOOGLE_CLIENT_SECRET,
+      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+      grant_type: 'refresh_token',
+    }),
+  });
+  const data = await resp.json().catch(() => ({}));
+  if (!resp.ok || !data.access_token) throw new Error('gmail token: ' + (data.error || resp.status));
+  gmailToken = { value: data.access_token, exp: Date.now() + (data.expires_in || 3600) * 1000 };
+  return gmailToken.value;
+}
+const b64 = (s) => Buffer.from(s, 'utf8').toString('base64');
+const encHeader = (s) => `=?UTF-8?B?${b64(s)}?=`; // RFC 2047 for non-ASCII (e.g. the ° in Voya°)
+function buildRawEmail({ to, subject, html }) {
+  const msg = [
+    `From: ${encHeader('Voya°')} <${FROM_EMAIL()}>`,
+    `To: ${to}`,
+    `Subject: ${encHeader(subject)}`,
+    'MIME-Version: 1.0',
+    'Content-Type: text/html; charset=UTF-8',
+    'Content-Transfer-Encoding: base64',
+    '',
+    b64(html),
+  ].join('\r\n');
+  return b64(msg).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); // base64url
+}
+async function sendViaGmail({ to, subject, html }) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 8000);
+  try {
+    const token = await gmailAccessToken();
+    const resp = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
+      method: 'POST',
+      headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
+      body: JSON.stringify({ raw: buildRawEmail({ to, subject, html }) }),
+      signal: ctrl.signal,
+    });
+    if (resp.ok) return { sent: true };
+    const errText = await resp.text().catch(() => '');
+    console.error('✉️  gmail send failed:', resp.status, errText);
+    return { error: `gmail ${resp.status}` };
+  } catch (err) {
+    console.error('✉️  gmail send error:', err.message);
+    return { error: err.message };
+  } finally {
+    clearTimeout(t);
+  }
+}
 
 // Send via Brevo's transactional email HTTP API (port 443 — never blocked).
 async function sendViaBrevo({ to, subject, html }) {
@@ -64,7 +125,8 @@ async function send({ to, subject, html }) {
     console.log(`✉️  [email skipped — not configured] would send "${subject}" to ${to}`);
     return { skipped: true };
   }
-  // Brevo HTTP API is primary (Render blocks SMTP); SMTP is the local fallback.
+  // All HTTPS-based senders first (Render blocks SMTP); SMTP is the local fallback.
+  if (gmailConfigured()) return sendViaGmail({ to, subject, html });
   if (process.env.BREVO_API_KEY) return sendViaBrevo({ to, subject, html });
   try {
     await getTransporter().sendMail({
