@@ -5,14 +5,38 @@ function gmailConfigured() {
 }
 function configured() {
   // All over HTTPS so they work on hosts that block SMTP (e.g. Render).
-  if (gmailConfigured()) return true;   // Gmail API (OAuth2)
+  if (process.env.RESEND_API_KEY) return true;   // Resend (preferred)
+  if (gmailConfigured()) return true;             // Gmail API (OAuth2)
   if (process.env.BREVO_API_KEY) return true;
   const p = process.env.EMAIL_PASS;
   return !!p && p !== 'your_gmail_app_password' && !!process.env.EMAIL_USER;
 }
 exports.isConfigured = configured;
 
-const FROM_EMAIL = () => process.env.EMAIL_USER || 'hello.voyatravel@gmail.com';
+const FROM_EMAIL = () => process.env.EMAIL_USER || 'hello@voyatravel.live';
+
+// ── Resend (transactional email over HTTPS — instant domain verification) ──
+async function sendViaResend({ to, subject, html }) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 8000);
+  try {
+    const resp = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'content-type': 'application/json' },
+      body: JSON.stringify({ from: `Voya° <${FROM_EMAIL()}>`, to: [to], subject, html }),
+      signal: ctrl.signal,
+    });
+    if (resp.ok) return { sent: true };
+    const errText = await resp.text().catch(() => '');
+    console.error('✉️  resend send failed:', resp.status, errText);
+    return { error: `resend ${resp.status}` };
+  } catch (err) {
+    console.error('✉️  resend send error:', err.message);
+    return { error: err.message };
+  } finally {
+    clearTimeout(t);
+  }
+}
 
 // ── Gmail API (send over HTTPS via OAuth2 — not blocked by Render) ──
 let gmailToken = { value: null, exp: 0 };
@@ -126,6 +150,7 @@ async function send({ to, subject, html }) {
     return { skipped: true };
   }
   // All HTTPS-based senders first (Render blocks SMTP); SMTP is the local fallback.
+  if (process.env.RESEND_API_KEY) return sendViaResend({ to, subject, html });
   if (gmailConfigured()) return sendViaGmail({ to, subject, html });
   if (process.env.BREVO_API_KEY) return sendViaBrevo({ to, subject, html });
   try {
